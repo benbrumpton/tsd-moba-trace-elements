@@ -6,7 +6,6 @@ phen=${prefix}.rn
 
 #Input files (temporary paths only used during analysis on cluster)
 phenoIn=$SCRATCH/dat/moba_${prefix}_pheno_120122.txt
-covarIn=$SCRATCH/dat/moba_trace_element_covars_120122.txt
 genoFile=$SCRATCH/dat/{1:23}
 impFile=$SCRATCH/dat/{1:23}.bgen
 sample=$SCRATCH/dat/{1:23}.sample
@@ -21,7 +20,7 @@ bolt \
   --bfile=${genoFile} \
   --phenoFile=${phenoIn} \
   --phenoCol=${phen} \
-  --covarFile=${covarIn} \
+  --covarFile=${phenoIn} \
   --qCovarCol=PC1 \
   --qCovarCol=PC2 \
   --qCovarCol=PC3 \
