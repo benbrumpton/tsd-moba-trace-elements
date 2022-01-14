@@ -1,0 +1,46 @@
+#!/bin/bash
+
+#SBATCH --job-names=te_gwas
+#SBATCH --account=p1531_tsd
+#SBATCH --time==00:00.00 #NEED TO CHANGE
+#SBATCH --mem-per-cpu=2MB #NEED TO CHANGE
+#SBATCH --cpus-per-task=1
+#SBATCH --array=1-11
+
+#Clear inherited modules and load software
+module purge
+module load BOLT-LMM/2.3.4-foss-2020b
+
+#Permanent paths for runscript, data, results
+submit=$(pwd -P) #Path to the GWAS script home folder from which I should submit the job
+dump=$submit'../results' #Path to home folder where results should be copied back
+datdir='/cluster/projects/p1531/moba_gwas/data' #Need to copy all input files here before we run analysis
+
+#Clean up at error and put results in dump folder when finished or if anything goes wrong
+set -o errexit
+export results=$(date +%Y%m%d)'_trace_element_GWAS'
+cleanup "cp -r $SCRATCH/$results $dump/"
+
+#Move to SCRATCH, create temporary folders for data and results
+cd $SCRATCH
+mkdir $results
+mkdir 'dat'
+
+#Copy all input files and scripts to the temporary folder
+cp -r $datdir dat/
+cp $submit'/run_GWAS.sh' $results
+
+#Run GWAS
+cd $results
+declare -a commands
+commands[1]="bash run_GWAS.sh Mn"
+commands[2]="bash run_GWAS.sh Co"
+commands[3]="bash run_GWAS.sh Cu"
+commands[4]="bash run_GWAS.sh Zn"
+commands[5]="bash run_GWAS.sh As"
+commands[6]="bash run_GWAS.sh Se"
+commands[7]="bash run_GWAS.sh Mo"
+commands[8]="bash run_GWAS.sh Cd"
+commands[9]="bash run_GWAS.sh Tl"
+commands[10]="bash run_GWAS.sh Pb"
+commands[12]="bash run_GWAS.sh Hg"
