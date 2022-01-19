@@ -2,7 +2,7 @@
 
 #SBATCH --job-names=te_gwas
 #SBATCH --account=p1531_tsd
-#SBATCH --time==00:00.00 #NEED TO CHANGE
+#SBATCH --time==00:00:00 #NEED TO CHANGE
 #SBATCH --mem-per-cpu=2MB #NEED TO CHANGE
 #SBATCH --cpus-per-task=1
 #SBATCH --array=1-11
@@ -13,7 +13,7 @@ module load BOLT-LMM/2.3.4-foss-2020b
 
 #Permanent paths for runscript, data, results
 submit=$(pwd -P) #Path to the GWAS script home folder from which I should submit the job
-dump=$submit'../results' #Path to home folder where results should be copied back
+dump=$submit'/../results' #Path to home folder where results should be copied back
 datdir='/cluster/projects/p1531/moba_gwas/data' #Need to copy all input files here before we run analysis
 
 #Clean up at error and put results in dump folder when finished or if anything goes wrong
