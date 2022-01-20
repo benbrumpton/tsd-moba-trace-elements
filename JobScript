@@ -2,8 +2,8 @@
 
 #SBATCH --job-names=te_gwas
 #SBATCH --account=p1531_tsd
-#SBATCH --time==00:00:00 #NEED TO CHANGE
-#SBATCH --mem-per-cpu=2MB #NEED TO CHANGE
+#SBATCH --time==04:00:00
+#SBATCH --mem-per-cpu=4000MB
 #SBATCH --cpus-per-task=1
 #SBATCH --array=1-11
 
