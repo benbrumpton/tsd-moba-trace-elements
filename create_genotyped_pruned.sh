@@ -7,5 +7,5 @@ done
 wait
 
 for i in {1..22} X
-do plink2 --bfile ${i} --keep trace_element_fid_iid.txt --extract SNPlist${i}.txt --indep-pairwise 50 5 0.8 --make-bed --out chr${i}_pruned
+do plink2 --bfile ${i} --keep trace_element_fid_iid.txt --extract SNPlist${i}.txt --indep-pairwise 50 5 0.3 --make-bed --out chr${i}_pruned
 done
