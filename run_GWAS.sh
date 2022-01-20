@@ -5,12 +5,12 @@ prefix=$1
 phen=${prefix}.rn
 
 #Input files (temporary paths only used during analysis on cluster)
-phenoIn=$SCRATCH/dat/moba_${prefix}_pheno_120122.txt
-genoFile=$SCRATCH/dat/{1:23}
-impFile=$SCRATCH/dat/{1:23}.bgen
-sample=$SCRATCH/dat/{1:23}.sample
-LDfile=$SCRATCH/dat/LDSCORE.1000G_EUR.tab.gz
-mapFile=$SCRATCH/dat/genetic_map_hg19_withX.txt.gz
+phenoIn=../dat/data/moba_${prefix}_pheno_120122.txt
+genoFile=../dat/data/chr{1:23}_pruned
+impFile=../dat/data/{1:23}_subset.bgen
+sample=../dat/data/{1:23}_subset.sample
+LDfile=../dat/data/LDSCORE.1000G_EUR.tab.gz
+mapFile=../dat/data/genetic_map_hg19_withX.txt.gz
 
 #Output files
 imputedResults=${prefix}_BOLTLMM.imputed.results.txt
