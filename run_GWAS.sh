@@ -6,9 +6,11 @@ phen=${prefix}.rn
 
 #Input files (temporary paths only used during analysis on cluster)
 phenoIn=../dat/data/moba_${prefix}_pheno_120122.txt
-genoFile=../dat/data/chr{1:23}_pruned
+bedFile=../dat/data/chr{1:23}_genotyped_pruned.bed
+bimFile=../dat/data/chr{1:23}_genotyped_pruned.bim
+famFile=../dat/data/chr1_genotyped_pruned.fam
 impFile=../dat/data/{1:23}_subset.bgen
-sample=../dat/data/{1:23}_subset.sample
+sample=../dat/data/1_subset.sample
 LDfile=../dat/data/LDSCORE.1000G_EUR.tab.gz
 mapFile=../dat/data/genetic_map_hg19_withX.txt.gz
 
@@ -17,7 +19,9 @@ imputedResults=${prefix}_BOLTLMM.imputed.results.txt
 genotypeResults=${prefix}_BOLTLMM.genotyped.results.txt
 
 bolt \
-  --bfile=${genoFile} \
+  --bed=${bedFile} \
+  --bim=${bimFile} \
+  --fam=${famFile} \
   --phenoFile=${phenoIn} \
   --phenoCol=${phen} \
   --covarFile=${phenoIn} \
@@ -33,7 +37,7 @@ bolt \
   --qCovarCol=PC10 \
   --qCovarCol=AgeSample \
   --LDscoresFile=${LDfile} \
-  --LDscoresMatchPb \
+  --LDscoresMatchBp \
   --geneticMapFile=${mapFile} \
   --lmm \
   --statsFile=${genotypeResults} \
