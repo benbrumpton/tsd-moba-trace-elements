@@ -12,8 +12,8 @@ module purge
 module load BOLT-LMM/2.3.4-foss-2020b
 
 #Permanent paths for runscript, data, results
-submit=$(pwd -P) #Path to the GWAS script home folder from which I should submit the job
-dump=$submit'/../results' #Path to home folder where results should be copied back
+submit=$(pwd -P) #Path to the script folder on cluster from which I should submit the job
+dump=$submit'/../results' #Path to folder on cluster where results should be copied back
 datdir='/cluster/projects/p1531/moba_gwas/data' #Need to copy all input files here before we run analysis
 
 #Clean up at error and put results in dump folder when finished or if anything goes wrong
