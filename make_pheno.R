@@ -66,7 +66,7 @@ element_names <- c("Mn.Manganese","Co.Cobalt","Cu.Copper","Zn.Zinc","As.Arsenic"
 library(RNOmni)
 for (i in 1:length(element_names)){
   trace_element <- element_names[i]
-  fields <- c("FID","IID","MATID","PATID","Mn_Mangan","AgeSample","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",trace_element)
+  fields <- c("FID","IID","MATID","PATID","AgeSample","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",trace_element)
   pheno <- tmp2[,fields]
   pheno <- na.omit(pheno)
   
