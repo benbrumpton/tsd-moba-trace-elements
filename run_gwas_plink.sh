@@ -13,14 +13,11 @@ covarFile=../dat/data_plink/moba_trace_element_covars_120122.txt
 genoFile=../dat/data_plink/chr${chrom}_moba
 
 #Output files
-resFile=chr${chrom}_${prefix}
+resFile=chr${chrom}
 plink2 \
 	--bfile ${genoFile}	\
-	--ci 0.95	\
 	--pheno ${phenoFile}	\
 	--covar ${covarFile}	\
-	--covar-variance-standardize	\
-	--glm	\
+	--mac 10	\
+	--glm	hide-covar omit-ref	\
   	--out ${resFile}	\
-
-
