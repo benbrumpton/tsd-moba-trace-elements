@@ -19,5 +19,5 @@ plink2 \
 	--pheno ${phenoFile}	\
 	--covar ${covarFile}	\
 	--mac 10	\
-	--glm	hide-covar omit-ref	\
+	--glm	hide-covar omit-ref cols=chrom,pos,ref,alt,a1freq,nobs,orbeta,se,p	\
   	--out ${resFile}	\
